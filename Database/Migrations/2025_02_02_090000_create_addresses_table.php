@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->uuid('id')->primary();
-
+            $table->tinyInteger('is_shipping_address')->default(1);
+            $table->tinyInteger('is_billing_address')->default(1);
             $table->string('address');
             $table->string('street_number')->nullable();
             $table->string('zipcode', 10);

@@ -13,4 +13,9 @@ trait HasAddresses
         return $this->morphMany(Address::class, 'addressable');
     }
 
+    public function hasAnyAddresses()
+    {
+        return $this->addresses->count() || optional(optional($this->company)->addresses)->count();
+    }
+
 }
